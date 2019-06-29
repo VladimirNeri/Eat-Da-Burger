@@ -1,10 +1,6 @@
 // Set up Controller.  Activity 16
 var express = require("express");
-
-// Router.get .post .put 
 var router = express.Router();
-
-// Import the model (burger.js) to use its database functions.
 var burger = require("../models/burger.js");
 
 // Create all our routes and set up logic within those routes where required.
@@ -20,26 +16,21 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-  burger.insertOne([
-    
-    "name", "eaten"
-
-  ], [
-    
-    req.body.name, req.body.eaten], function(result) {
+  burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function(result) {
     // Send back the ID of the new quote
-    res.redirect("/");
+    res.json({ id: result.insertId });
   });
 });
 
 router.put("/:id", function(req, res) {
   var condition = "id = " + req.params.id;
+      console.log("condition", condition);
 
-  console.log("condition", condition);
-
-  burger.updateOne({
-    eaten: req.body.eaten
-  }, condition, function() {
+  burger.updateOne(
+    {
+    devoured: req.body.devoured
+  }, 
+    condition, function() {
     res.redirect("/");
   });
 });
