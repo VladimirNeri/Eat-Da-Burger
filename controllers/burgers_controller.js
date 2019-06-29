@@ -10,7 +10,7 @@ var burger = require("../models/burger.js");
 // Create all our routes and set up logic within those routes where required.
 // Routing is the where.  Function is handled by controller.  Function is the what.  However don't define functions here.   
 router.get("/", function(req, res) {
-  burger.all(function(data) {
+  burger.selectAll(function(data) {
     var hbsObject = {
       burgers: data
     };
@@ -20,7 +20,7 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-  burger.create([
+  burger.insertOne([
     
     "name", "eaten"
 
@@ -37,20 +37,14 @@ router.put("/:id", function(req, res) {
 
   console.log("condition", condition);
 
-  burger.update({
+  burger.updateOne({
     eaten: req.body.eaten
   }, condition, function() {
     res.redirect("/");
   });
 });
 
-router.delete("/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
 
-  burger.delete(condition, function() {
-    res.redirect("/");
-  });
-});
 
 // Export routes for server.js to use.
 module.exports = router;

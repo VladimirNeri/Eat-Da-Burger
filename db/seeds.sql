@@ -1,8 +1,8 @@
-INSERT INTO burgers (name) 
+INSERT INTO burgers (burger_name, devoured) 
 VALUES ('Big Mac');
 
-INSERT INTO burgers (name) 
+INSERT INTO burgers (burger_name, devoured) 
 VALUES ('Whopper');
 
-INSERT INTO burgers (name) 
+INSERT INTO burgers (burger_name, devoured) 
 VALUES ('Jollibee');
