@@ -1,6 +1,8 @@
 // Set up Controller.  Activity 16
 var express = require("express");
+
 var router = express.Router();
+
 var burger = require("../models/burger.js");
 
 // Create all our routes and set up logic within those routes where required.
@@ -17,10 +19,10 @@ router.get("/", function(req, res) {
 
 router.post("/", function(req, res) {
   console.log(req.body.burger_name);
-  burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function(result) {
+  burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function() {
     // Send back the ID of the new quote
-    res.json({ id: result.insertId });
-  // });
+    res.redirect("/");;
+  });
 });
 
 router.put("/:id", function(req, res) {
@@ -42,7 +44,6 @@ router.delete("/:id", function(req, res) {
   burger.delete(condition, function() {
     res.redirect("/");
   });
-});
 });
 
 
