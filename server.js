@@ -1,16 +1,17 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var methodOverride = require("method-override");
+var path = require("path");
 
 var PORT = process.env.PORT || 8080;
 var app = express();
 
-// Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static(__dirname + "public"));
+app.get("/", function(req, res) {
+  res.sendFile(path.join(__dirname, "public"));
+});
 
-app.get("/", function(req,res) {
-  res.json(path.join(_dirname, "public/index.html"));
-};
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static(path.join(__dirname, "public")));
 
 // Parse application body as JSON
 app.use(express.urlencoded({ extended: true }));
