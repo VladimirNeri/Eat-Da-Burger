@@ -10,7 +10,7 @@
         {{#each burgers}}
           {{#unless devoured}}
             <li>
-              {{burgers}}
+              {{burger_name}}
 
               <form action="/{{id}}?_method=PUT" method="POST">
                 <input type="hidden" name="devoured" value="true">
@@ -36,7 +36,7 @@
         {{#each burgers}}
           {{#if devoured}}
             <li>
-              {{burgers}}
+              {{burger_name}}
 
               <form action="/{{id}}?_method=PUT" method="POST">
                 <input type="hidden" name="devoured" value="false">
@@ -60,7 +60,7 @@
 
     <div class="form-group">
       <label for="sleepy">Ready to order?</label><br>
-      <input type="radio" name="sleepy" value="0" checked> Order up!
+      <input type="radio" name="sleepy" value="0" checked> New Order!
     </div>
 
     <button type="submit">Add Burger</button>
