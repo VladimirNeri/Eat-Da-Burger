@@ -18,6 +18,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Override with POST having ?_method=DELETE
 app.use(methodOverride("_method"));
 
+// Timeout
+app.use(timeout(15000));
+app.use(haltOnTimedout);
+
+function haltOnTimedout(req, res, next) {
+    if (!req.timedout) next();
+}
+
 // Set Handlebars.
 var exphbs = require("express-handlebars");
 
