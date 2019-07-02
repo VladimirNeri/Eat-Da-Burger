@@ -6,18 +6,14 @@ var path = require("path");
 var PORT = process.env.PORT || 8080;
 var app = express();
 
-app.get("/", function(req, res) {
-  res.sendFile(path.join(__dirname, "public"));
-});
-
 // Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(process.cwd() + "/public"));
 
 // Parse application body as JSON
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// app.use(express.urlencoded({ extended: false}));
+// app.use(express.json());
 // not sure about this one... 
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false}));
 
 // Override with POST having ?_method=DELETE
 app.use(methodOverride("_method"));
