@@ -1,6 +1,6 @@
 // Import MySQL connection.  Activity 16
 
-var connection = require("./config/connection.js");
+var connection = require("./connection.js");
 
 // Helper function for SQL syntax.  Activity 16
 function printQuestionMarks(num) {
