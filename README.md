@@ -14,10 +14,12 @@ In this assignment, you'll create a burger logger with MySQL, Node, Express, Han
 
 ## Technologies Used
 
+- NodeJs
+- Express 
+- ORM
+- MySQL
 - Javascript
-- Express Server
-- MVC Model
 - HTML
-- MYSQL 
-- NPM 
+- CSS
+- Handlebars
 - Heroku
